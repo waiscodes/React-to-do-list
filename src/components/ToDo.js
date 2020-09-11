@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 // Component function.
 function ToDo() {
@@ -15,14 +16,14 @@ function ToDo() {
    * Second item is a function that we use to update the state value.
    * !!! IMPORTANT: We never update the first item DIRECTLY EVER.
    */
-  const [newTask, setNewTask] = useState("default"); // Argument in "useState()" is the default value for this state.
+  const [newTask, setNewTask] = useState(""); // Argument in "useState()" is the default value for this state.
 
   // Set up state for our to-do list items.
   const [toDos, setToDos] = useState([
     // Default list of to-dos.
-    { task: "Buy milk" },
-    { task: "Learn React" },
-    { task: "Find out what Redux is" },
+    { id: uuidv4(), task: "Buy milk" },
+    { id: uuidv4(), task: "Learn React" },
+    { id: uuidv4(), task: "Find out what Redux is" },
   ]);
 
   // Function we can use for our "onSubmit" form event.
@@ -35,7 +36,7 @@ function ToDo() {
     // !!! We never update the state variable directly.
     // This is an object because the format we're using is an object. And you want to match formats.
     // And because that's how to method is going to read it.
-    newToDosList.push({ task: newTask });
+    newToDosList.push({ id: uuidv4(), task: newTask });
 
     //Update the state we need update the second variable
     setToDos(newToDosList);
@@ -63,8 +64,8 @@ function ToDo() {
         <input type="submit" value="Add To-Do" />
       </form>
       <ul>
-        {toDos.map((toDo, index) => (
-          <li key={index}>{toDo.task}</li>
+        {toDos.map((toDo) => (
+          <li key={toDo.id}>{toDo.task}</li>
         ))}
       </ul>
     </>
