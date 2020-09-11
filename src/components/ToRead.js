@@ -10,6 +10,7 @@ function ToRead() {
     <>
       <form>
         <label htmlFor="newBook">New Book: </label>
+
         <input
           type="text"
           id="newBook"
@@ -19,6 +20,7 @@ function ToRead() {
           value={newBook}
         />
         <input type="submit" value="Add To-Read" />
+        <p>The current task is: {newBook}</p>
       </form>
       <ul></ul>
     </>
