@@ -29,6 +29,18 @@ function ToDo() {
   const addNewTask = (event) => {
     // Don't let the page reload for the submission! Let's prevent that default action.
     event.preventDefault();
+    // We can use the spread operator to break up an array
+    //each item inside is treated as an argument (value sperated by commas, we write it manually)
+    const newToDosList = [...toDos]; //Fresh array with the same values from our state.
+    // !!! We never update the state variable directly.
+    // This is an object because the format we're using is an object. And you want to match formats.
+    // And because that's how to method is going to read it.
+    newToDosList.push({ task: newTask });
+
+    //Update the state we need update the second variable
+    setToDos(newToDosList);
+
+    setNewTask("");
   };
 
   // We use "return" for our render, in a component.
